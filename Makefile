@@ -89,6 +89,9 @@ PACKER_VARS := -var 'cm=$(CM)' -var 'version=$(BOX_VERSION)' -var 'update=$(UPDA
 ifdef CM_VERSION
 	PACKER_VARS += -var 'cm_version=$(CM_VERSION)'
 endif
+ifdef SHUTDOWN_TIMEOUT
+	PACKER_VARS += -var 'shutdown_timeout=$(SHUTDOWN_TIMEOUT)'
+endif
 PACKER ?= packer
 ifdef PACKER_DEBUG
 	PACKER := PACKER_LOG=1 $(PACKER) --debug
