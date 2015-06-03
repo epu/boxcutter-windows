@@ -14,6 +14,7 @@
         "floppy/passwordchange.bat",
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
+        "floppy/install-chocolatey.cmd",
         "floppy/zz-start-sshd.cmd"
       ],
       "guest_os_type": "windows7-64",
@@ -48,6 +49,7 @@
         "floppy/passwordchange.bat",
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
+        "floppy/install-chocolatey.cmd",
         "floppy/zz-start-sshd.cmd",
         "floppy/oracle-cert.cer"
       ],
@@ -92,6 +94,7 @@
         "floppy/passwordchange.bat",
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
+        "floppy/install-chocolatey.cmd",
         "floppy/zz-start-sshd.cmd"
       ],
       "guest_os_type": "win-7",
