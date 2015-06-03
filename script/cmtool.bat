@@ -41,12 +41,16 @@ if exist "%SystemRoot%\_download.cmd" (
 if not exist "%CHEF_PATH%" goto exit1
 
 echo ==^> Installing Chef client %CM_VERSION%
-msiexec /qb /i "%CHEF_PATH%" /l*v "%CHEF_DIR%\chef.log" %CHEF_OPTIONS%
+set INSTALL_COMMAND=msiexec /qb /i "%CHEF_PATH%" /l*v "%CHEF_DIR%\chef.log" %CHEF_OPTIONS%
+%INSTALL_COMMAND%
+set CHEF_CODE=%ERRORLEVEL%
+:: Negative error codes are a thing.
+if "%CHEF_CODE%x" EQU "0x" goto exit0
 
-@if errorlevel 1 echo ==^> WARNING: Error %ERRORLEVEL% was returned by: msiexec /qb /i "%CHEF_PATH%" /l*v "%CHEF_DIR%\chef.log" %CHEF_OPTIONS%
+@echo ==^> WARNING: Error %CHEF_CODE% was returned by: %INSTALL_COMMAND%
 ver>nul
 
-goto exit0
+goto exit1
 
 ::::::::::::
 :chefdk
