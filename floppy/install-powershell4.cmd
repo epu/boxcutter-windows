@@ -1,7 +1,7 @@
 @setlocal EnableDelayedExpansion EnableExtensions
 @for %%i in (%~dp0\_packer_config*.cmd) do @call "%%~i"
 ::Toggling 'echo' turns it on/off globally, for chained batches.
-::@if defined PACKER_DEBUG (@echo on) else (@echo off)
+@if defined PACKER_DEBUG (@echo on) else (@echo off)
 @set _SILENT_=@
 %_SILENT_%if defined PACKER_DEBUG set _SILENT_=
 %_SILENT_%reg Query "HKLM\SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" /v PowerShellVersion | find "4.0" > NUL 2>&1 && set INSTALLED=1
@@ -27,8 +27,8 @@
 %_SILENT_%echo ==^> Creating "%POWERSHELL4_DIR%"
 %_SILENT_%mkdir "%POWERSHELL4_DIR%"
 %_SILENT_%pushd "%POWERSHELL4_DIR%"
-%_SILENT_%if exist "%SystemRoot%\_download.cmd" set DOWNLOAD_COMMAND=call "%SystemRoot%\_download.cmd" "%OPENSSH_URL%" "%OPENSSH_PATH%"
-%_SILENT_%if not defined DOWNLOAD_COMMAND set DOWNLOAD_COMMAND=powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%OPENSSH_URL%', '%OPENSSH_PATH%')" <NUL
+%_SILENT_%if exist "%SystemRoot%\_download.cmd" set DOWNLOAD_COMMAND=call "%SystemRoot%\_download.cmd" "%POWERSHELL4_URL%" "%POWERSHELL4_PATH%"
+%_SILENT_%if not defined DOWNLOAD_COMMAND set DOWNLOAD_COMMAND=powershell -Command "(New-Object System.Net.WebClient).DownloadFile('%POWERSHELL4_URL%', '%POWERSHELL4_PATH%')" <NUL
 %_SILENT_%echo ==^> Downloading "%POWERSHELL4_URL%" to "%POWERSHELL4_PATH%"
 %_SILENT_%%DOWNLOAD_COMMAND%
 %_SILENT_%set CODE=%ERRORLEVEL%
@@ -39,7 +39,7 @@
 
 :install
 %_SILENT_%echo ==^> Installing PowerShell 4.
-%_SILENT_%set INSTALL_COMMAND=wusa.exe /quiet /norestart
+%_SILENT_%set INSTALL_COMMAND=wusa.exe /quiet /norestart "%POWERSHELL4_PATH%"
 %_SILENT_%%INSTALL_COMMAND%
 %_SILENT_%set CODE=%ERRORLEVEL%
 %_SILENT_%if "%CODE%x" EQU "0x" goto :exit

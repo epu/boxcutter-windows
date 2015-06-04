@@ -1,7 +1,7 @@
 @setlocal EnableDelayedExpansion EnableExtensions
 @for %%i in (%~dp0\_packer_config*.cmd) do @call "%%~i"
 ::Toggling 'echo' turns it on/off globally, for chained batches.
-::@if defined PACKER_DEBUG (@echo on) else (@echo off)
+@if defined PACKER_DEBUG (@echo on) else (@echo off)
 @set _SILENT_=@
 %_SILENT_%if defined PACKER_DEBUG set _SILENT_=
 %_SILENT_%if not defined CHOCO_URL set CHOCO_URL=https://chocolatey.org/install.ps1
