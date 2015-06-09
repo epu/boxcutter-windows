@@ -15,6 +15,7 @@
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
         "floppy/install-chocolatey.cmd",
+        "floppy/install-dotnet45.cmd",
         "floppy/install-powershell4.cmd",
         "floppy/zz-start-sshd.cmd"
       ],
@@ -51,6 +52,7 @@
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
         "floppy/install-chocolatey.cmd",
+        "floppy/install-dotnet45.cmd",
         "floppy/install-powershell4.cmd",
         "floppy/zz-start-sshd.cmd",
         "floppy/oracle-cert.cer"
@@ -97,6 +99,7 @@
         "floppy/networkprompt.bat",
         "floppy/openssh.bat",
         "floppy/install-chocolatey.cmd",
+        "floppy/install-dotnet45.cmd",
         "floppy/install-powershell4.cmd",
         "floppy/zz-start-sshd.cmd"
       ],

@@ -61,6 +61,11 @@ WIN81_X86_PRO_CHECKSUM ?= c2d6f5d06362b7cb17dfdaadfb848c760963b254
 
 # Possible values for CM: (nocm | chef | chefdk | salt | puppet)
 CM ?= nocm
+
+# Possible values for CHECKSUM_TYPE: ( none | md5 | sha1 | sha256 | sha512 )
+# none will skip, which is useful for developing.
+CHECKSUM_TYPE ?= sha1
+
 # Possible values for CM_VERSION: (latest | x.y.z | x.y)
 CM_VERSION ?=
 ifndef CM_VERSION
@@ -91,6 +96,9 @@ ifdef CM_VERSION
 endif
 ifdef SHUTDOWN_TIMEOUT
 	PACKER_VARS += -var 'shutdown_timeout=$(SHUTDOWN_TIMEOUT)'
+endif
+ifdef CHECKSUM_TYPE
+	PACKER_VARS += -var 'iso_checksum_type=$(CHECKSUM_TYPE)'
 endif
 PACKER ?= packer
 ifdef PACKER_DEBUG
